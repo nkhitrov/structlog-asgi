@@ -1,0 +1,25 @@
+[tool.pdm]
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "uvicorn>=0.22.0",
+    "fastapi>=0.95.1",
+    "black>=23.3.0",
+    "pytest-structlog>=0.6",
+    "assertpy>=1.1",
+    "pytest-randomly>=3.12.0",
+    "pytest-asyncio>=0.21.0",
+    "gunicorn>=20.1.0",
+]
+[project]
+name = ""
+version = "0.0.1"
+description = ""
+authors = [
+    {name = "Nick Khitrov", email = "khitrov34@gmail.com"},
+]
+dependencies = [
+    "structlog>=23.1.0",
+]
+requires-python = ">=3.9"
+license = {text = "MIT"}
