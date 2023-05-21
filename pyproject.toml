@@ -12,9 +12,9 @@ dev = [
     "gunicorn>=20.1.0",
 ]
 [project]
-name = ""
+name = "structlog-asgi"
 version = "0.0.1"
-description = ""
+description = "Eazy structlog configuration for asgi applications"
 authors = [
     {name = "Nick Khitrov", email = "khitrov34@gmail.com"},
 ]

@@ -1,6 +1,6 @@
-# https://habr.com/ru/articles/513966/
-# 7. Исключения в процессе журналирования
-# сделать обработчик ошибок логера, который будет отсылать в сентри
+# https://towardsdatascience.com/8-advanced-python-logging-features-that-you-shouldnt-miss-a68a5ef1b62d
+# Add sentry capturing events for logger exceptions
+# TODO: in progress
 
 import logging
 import multiprocessing
