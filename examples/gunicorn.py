@@ -7,14 +7,13 @@ from structlog_asgi.integrations.gunicorn.worker import GunicornStandaloneApplic
 
 def run():
     level = logging.DEBUG
-    json_format = False
-    structlog_asgi.configure(level=level, json_format=json_format)
-    worker_class = "structlog_asgi.integrations.uvicorn.worker.StructlogUvicornWorker"
+    structlog_asgi.setup_logging(log_level=level, log_format="plain")
     options = {
         "bind": "0.0.0.0",
         "workers": 1,
         "loglevel": logging.getLevelName(level),
-        "worker_class": worker_class,
+        # "worker_class": "structlog_asgi.integrations.gunicorn.StructlogUvicornWorker",
+        "worker_class": "uvicorn.workers.UvicornWorker",
         "logger_class": StubbedGunicornLogger,
     }
 

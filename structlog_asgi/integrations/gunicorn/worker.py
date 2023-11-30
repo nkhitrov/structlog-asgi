@@ -8,6 +8,9 @@ class GunicornStandaloneApplication(BaseApplication):
         super().__init__()
 
     def load_config(self):
+        for key, value in self.options.items():
+            print(key, value)
+
         c = {
             key: value
             for key, value in self.options.items()

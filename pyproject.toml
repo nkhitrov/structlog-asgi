@@ -20,6 +20,7 @@ authors = [
 ]
 dependencies = [
     "structlog>=23.1.0",
+    "structlog-sentry>=2.0.3",
 ]
 requires-python = ">=3.9"
 license = {text = "MIT"}
