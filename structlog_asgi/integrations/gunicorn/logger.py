@@ -5,7 +5,6 @@ from gunicorn.glogging import Logger
 
 class StubbedGunicornLogger(Logger):
     def setup(self, cfg):
-        print(cfg.loglevel)
         _nameToLevel = {
             "CRITICAL": logging.CRITICAL,
             "FATAL": logging.FATAL,

@@ -7,7 +7,6 @@ from fastapi import FastAPI
 from uvicorn import Config, Server
 
 import structlog_asgi
-from structlog_asgi.integrations.uvicorn import build_uvicorn_log_config
 from tests.support import read_json_logs
 
 pytestmark = [pytest.mark.asyncio]
@@ -32,11 +31,9 @@ async def run_server(config: Config):
 async def test_uvicorn_logs_format(capfd):
     app = FastAPI()
 
-    structlog_asgi.configure(json_format=True)
+    structlog_asgi.setup_logging(log_format="json")
 
-    log_config = build_uvicorn_log_config(json_format=True)
-
-    config = Config(app=app, log_config=log_config)
+    config = Config(app=app, log_config=None)
     async with run_server(config):
         pass
 
@@ -44,8 +41,8 @@ async def test_uvicorn_logs_format(capfd):
 
     started_log, *head = logs
 
-    assert started_log["event"].startswith("Started server process [")
-    assert_that(head).extracting("event").is_equal_to(
+    assert started_log["message"].startswith("Started server process [")
+    assert_that(head).extracting("message").is_equal_to(
         [
             "Waiting for application startup.",
             "Application startup complete.",
@@ -62,11 +59,9 @@ async def test_uvicorn_logs_format(capfd):
 
     for log in logs:
         assert_that(log).contains_key(
-            "filename",
             "module",
             "func_name",
             "timestamp",
             "thread",
             "process",
-            "pathname",
         )

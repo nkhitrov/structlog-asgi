@@ -6,16 +6,11 @@ import uvicorn
 
 
 def run():
-    level = logging.DEBUG
-    json_format = False
-    structlog_asgi.configure(level=level, json_format=json_format)
+    structlog_asgi.setup_logging(log_level=logging.DEBUG, log_format="json")
 
-    log_config = structlog_asgi.build_uvicorn_log_config(
-        level=level, json_format=json_format
-    )
     from examples.asgi_app import app
 
-    uvicorn.run(app=app, log_config=log_config, use_colors=False)
+    uvicorn.run(app=app, log_config=None)
 
 
 if __name__ == "__main__":

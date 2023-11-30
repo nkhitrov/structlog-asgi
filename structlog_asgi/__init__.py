@@ -1,6 +1,5 @@
-from .config import configure
-from .integrations.uvicorn import build_uvicorn_log_config
+from .config import setup_logging
 from .testing import capture_full_logs
 
 
-__all__ = ("configure", "capture_full_logs", "build_uvicorn_log_config")
+__all__ = ("setup_logging", "capture_full_logs")
